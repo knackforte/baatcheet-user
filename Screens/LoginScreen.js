@@ -13,19 +13,23 @@ export default class LoginScreen extends React.Component{
             }
         }
         handleOnLogin=()=>{
+            let error=false
             if(this.state.email==""){
                 this.setState({emailError:true})
+                error=true
                 
             }else{
                 this.setState({emailError:false})
-                
             }
             if(this.state.password==""){
                 this.setState({passwordError:true})
-                
+                error=true
             }else{
                 this.setState({passwordError:false})
                 
+            }
+            if(!error){
+                Actions.ScrolView()
             }
         }
         checkInputState(inputType){
@@ -47,35 +51,25 @@ export default class LoginScreen extends React.Component{
         {
      return(
         
-        <ImageBackground style={{flex:1,}} source={{uri:'https://images.pexels.com/photos/1265952/pexels-photo-1265952.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260'}}>
+        <ImageBackground style={{flex:1,}} source={require('../assets/images/background.jpeg')}>
           <View style={{flex:1,backgroundColor:'#234a2561',padding:10}}>
             {/* firsrt row */}
-           <View style={{padding:40 }}>
-        <Text style={{fontSize:40,color:'white',textAlign:'center'}}>
+           <View style={{padding:40,paddingLeft:20}}>
+        <Text style={{fontSize:40,color:'white',marginLeft:-7}}>
             Welcome
          </Text>
-        <Text style={{fontSize:12,color:'white',textAlign:'center'}}>
+        <Text style={{fontSize:12,color:'white',}}>
              Login to your Account
         </Text>
 
 
            </View>
            {/* Second Row */}
-           <View style={{padding:10 }} >
+           <View style={{padding:10,marginTop:20 }} >
                     <TextInput value={this.state.email} onChangeText={(uemail)=>{this.setState({email:uemail})}} textContentType={"emailAddress"} placeholderTextColor={"white"} placeholder={" Enter your email"} style={[styles.inputStyle,this.checkInputState('email')]}/>
                     <TextInput value={this.state.password} onChangeText={(pass)=>{this.setState({password:pass})}} secureTextEntry placeholderTextColor={"white"} placeholder={"Password"} style={[styles.inputStyle,this.checkInputState('password')]}/>
            </View>
-           {/* 3 rOW */}
-           <View style={{flexDirection:'row',padding:25}}>
-               <View style={{flex:1}}>
-                   <Text style={{color:'white'}}>Remember</Text>
-
-
-               </View>
-               <View style={{flex:1}}>
-               <Text style={{textAlign:'right',color:'white'}}>Forget?</Text>
-               </View>
-           </View>
+           
            {/* 4 Row */}
            <View style={{paddingLeft:10,paddingRight:10,paddingTop:10}}>
                <TouchableOpacity  onPress={this.handleOnLogin} style={{margin:10,backgroundColor:'#04C363',height:50,borderRadius:9}}>

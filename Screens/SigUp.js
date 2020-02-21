@@ -134,15 +134,13 @@ export default class SigUp extends React.Component{
     render()
     {
     return(
-        <ImageBackground style={{backgroundColor:'#103726',flex:1,}} source={{uri:'https://images.pexels.com/photos/1265952/pexels-photo-1265952.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260'}}>
+        <ImageBackground style={{backgroundColor:'#103726',flex:1,}} source={require('../assets/images/background.jpeg')}>
         <View style={{flex:1,backgroundColor:'#234a2561',padding:10}}>
           {/* firsrt row */}
-         <View style={{padding:40 }}>
-      <Text style={{fontSize:40,color:'white',textAlign:'center'}}>
-          Register
+         <View style={{padding:40,paddingLeft:20 }}>
+      <Text style={{fontSize:40,color:'white',marginLeft:-3}}>Register
        </Text>
-      <Text style={{fontSize:12,color:'white',textAlign:'center'}}>
-           Create your Account
+      <Text style={{fontSize:12,color:'white'}}>Create your Account
       </Text>
 
 
